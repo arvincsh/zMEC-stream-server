@@ -1,3 +1,17 @@
+const http = require('http')
+const fs = require('fs');
+
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/html');
+  //const html = fs.readFileSync('index.html', 'utf8');
+  const html = fs.readFileSync('client.html', 'utf8');
+  res.write(html);
+  res.end();
+});
+server.listen(7000);
+
+
 const NodeMediaServer = require('./');
 
 const config = {
@@ -75,4 +89,3 @@ nms.on('postPlay', (id, StreamPath, args) => {
 nms.on('donePlay', (id, StreamPath, args) => {
   console.log('[NodeEvent on donePlay]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
 });
-
