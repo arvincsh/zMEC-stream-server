@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <title>Test</title>
+</head>
+
+<body>
+    <script src="https://cdn.bootcss.com/flv.js/1.4.2/flv.min.js"></script>
+
+      <input type="text" />
+      <button id="load">Load</button>
+      <br>
+      <video controls id="video"></video>
+    <script>
+        if (flvjs.isSupported()) {
+            document.querySelector("#load").addEventListener("click", function () {
+                const video = document.getElementById('video');
+                const target = document.querySelector("input").value;
+                const flvPlayer = flvjs.createPlayer({
+                    type: 'flv',
+                    url: `http://140.113.179.8:8000/live/${target}.flv`
+                    //url: `http://140.113.179.12:8000/live/${target}.flv`
+                });
+                flvPlayer.attachMediaElement(video)
+                flvPlayer.load();
+                flvPlayer.play();
+            })
+        }
+    </script>
+</body>
+
+</html>
