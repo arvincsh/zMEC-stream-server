@@ -92,7 +92,7 @@ nms.on('donePlay', (id, StreamPath, args) => {
 });
 
 const exec = require('child_process').exec;
-exec('ffmpeg -rtsp_transport tcp -i rtsp://localhost:8086/channel1 -vcodec copy -acodec copy -f flv rtmp://localhost/live/ipcam1', function(error, stdout, stderr){
+exec('ffmpeg -rtsp_transport tcp -i rtsp://localhost:8086/channel1 -vcodec copy -acodec copy -f flv rtmp://localhost/live/ipcam', function(error, stdout, stderr){
     if(error) {
         console.error('error: ' + error);
         return;
