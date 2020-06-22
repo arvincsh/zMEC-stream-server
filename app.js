@@ -97,10 +97,6 @@ exec('ffmpeg -rtsp_transport tcp -i rtsp://localhost:8086/channel1 -vcodec copy 
         console.error('error: ' + error);
         return;
     }
-    else{
-      console.log('rtsp to rtmp !!: ' + stdout);
-
-    }
     console.log('stdout: ' + stdout);
     console.log('stderr: ' + typeof stderr);
 });
