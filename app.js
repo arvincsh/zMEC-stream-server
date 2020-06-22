@@ -1,6 +1,7 @@
 const http = require('http')
 const fs = require('fs');
 
+
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/html');
@@ -88,4 +89,18 @@ nms.on('postPlay', (id, StreamPath, args) => {
 
 nms.on('donePlay', (id, StreamPath, args) => {
   console.log('[NodeEvent on donePlay]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
+});
+
+const exec = require('child_process').exec;
+exec('ffmpeg -rtsp_transport tcp -i rtsp://localhost:8086/channel1 -vcodec copy -acodec copy -f flv rtmp://localhost/live/ipcam1', function(error, stdout, stderr){
+    if(error) {
+        console.error('error: ' + error);
+        return;
+    }
+    else{
+      console.log('rtsp to rtmp !!: ' + stdout);
+
+    }
+    console.log('stdout: ' + stdout);
+    console.log('stderr: ' + typeof stderr);
 });
